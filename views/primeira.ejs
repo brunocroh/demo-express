@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+  <h1> Segunda pagina </h1>
+  <a href="/primeira"> primeirA </a>
+  <input id="nome">
+  <input id="sobrenome">
+  <button id="botao"> Executa algo no Backend</button>
+  <script>
+    document.querySelector('#botao').addEventListener("click", function(){
+      let nome = document.querySelector('#nome').value
+      let sobrenome = document.querySelector('#sobrenome').value
+      var xhr = new XMLHttpRequest();
+      xhr.onreadystatechange = function() {
+          if (xhr.readyState == XMLHttpRequest.DONE) {
+              alert(xhr.responseText);
+          }
+      }
+      xhr.open('GET', 'http://localhost:3000/executa/'+nome+'/'+sobrenome);
+      xhr.send(null);
+    });
+  </script>
+</body>
+</html>
